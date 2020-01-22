@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-	const [color, setColor] = useState({ red : 127, green : 127, blue : 127 });
-	console.log(color);
+	const [color, setColor] = useState({ red : 52, green : 52, blue : 52 });
 	
 	return (
 		<div className="App">
-			<input type = 'range' min = '0' max = '255' step = '1' value = '127' onChange = { ({ target }) => { setColor( target.value ) } }/>
-			<input type = 'range' min = '0' max = '255' step = '1' value = '127' onChange = { ({ target }) => { setColor( target.value ) } }/>
-			<input type = 'range' min = '0' max = '255' step = '1' value = '127' onChange = { ({ target }) => { setColor( target.value ) } }/>
+			<div className = 'row'>
+				<h4>Red</h4>
+				<input type = 'range' min = '0' max = '255' step = '1' onChange = { ({ target }) => { setColor( { red : target.value, green : color.green, blue : color.blue } ) } }/>
+				<h4>{ color.red }</h4>
+			</div>
+			<div className = 'row'>
+				<h4>Green</h4>
+				<input type = 'range' min = '0' max = '255' step = '1' onChange = { ({ target }) => { setColor( { red : color.red, green : target.value, blue : color.blue } ) } }/>
+				<h4>{ color.green }</h4>
+			</div>
+			<div className = 'row'>
+				<h4>Blue</h4>
+				<input type = 'range' min = '0' max = '255' step = '1' onChange = { ({ target }) => { setColor( { red : color.red, green : color.green, blue : target.value } ) } }/>
+				<h4>{ color.blue }</h4>
+			</div>
 			<div className = 'box' style = {{ backgroundColor : `rgb(${ color.red }, ${ color.green }, ${ color.blue })` }}></div>
 		</div>
 	);

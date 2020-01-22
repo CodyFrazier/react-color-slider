@@ -5,8 +5,12 @@
 	align-items: center;
 	text-align: center;
 }
-.App *{
+.App div{
 	margin: 1rem;
+}
+.row{
+	display: flex;
+	flex-flow: nowrap row;
 }
 .box{
 	width: 100px;
