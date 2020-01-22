@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [color, setColor] = useState({ red : 127, green : 127, blue : 127 });
+	console.log(color);
+	
+	return (
+		<div className="App">
+			<input type = 'range' min = '0' max = '255' step = '1' value = '127' onChange = { ({ target }) => { setColor( target.value ) } }/>
+			<input type = 'range' min = '0' max = '255' step = '1' value = '127' onChange = { ({ target }) => { setColor( target.value ) } }/>
+			<input type = 'range' min = '0' max = '255' step = '1' value = '127' onChange = { ({ target }) => { setColor( target.value ) } }/>
+			<div className = 'box' style = {{ backgroundColor : `rgb(${ color.red }, ${ color.green }, ${ color.blue })` }}></div>
+		</div>
+	);
 }
 
 export default App;
